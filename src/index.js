@@ -12,23 +12,30 @@ const li = document.getElementsByClassName("item");
 const buyBtn = el("buy-ticket");
 
 // 1. See the first movie's details, including its poster, title, runtime, showtime, and available tickets when the page loads. The number of available tickets will need to be derived by subtracting the number of tickets_sold from the theater's capacity.
+
+//data for first movie poster
 fetch(`${url}/${1}`)
   .then((res) => res.json())
   .then(renderMovie);
 
-function renderMovie(film) {
-  poster.src = film.poster;
-  title.textContent = film.title;
+//render the first film on the page
+function renderMovie(film) {        
+  poster.src = film.poster;         
+  title.textContent = film.title;   
   runtime.textContent = `${film.runtime} minutes`;
   description.textContent = film.description;
   showtime.textContent = film.showtime;
+
+  //calculate number of tickets remaining
   let ticketsRem = film.capacity - film.tickets_sold;
+    //display number of tickets remaining
   ticketNum.innerHTML = ticketsRem;
+    //sold out feature
   if (ticketsRem > 0) {
     buyBtn.textContent = "Buy Ticket";
   } else {
     buyBtn.textContent = "Sold Out";
-    li.classList.add("sold-out");
+    // li.classList.add("sold-out");
   }
 }
 

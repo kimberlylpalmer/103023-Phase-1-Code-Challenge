@@ -1,5 +1,4 @@
-// Your code here
-//variables:   poster, title, runtime, showtime, and available tickets
+//variables to create:   poster, title, runtime, showtime, and available tickets
 
 const url = "http://localhost:3000/films";
 const poster = el("poster");
@@ -11,7 +10,6 @@ const ticketNum = el("ticket-num");
 const movieListUl = el("films");
 const li = document.getElementsByClassName("item");
 const buyBtn = el("buy-ticket");
-console.log(buyBtn);
 
 // 1. See the first movie's details, including its poster, title, runtime, showtime, and available tickets when the page loads. The number of available tickets will need to be derived by subtracting the number of tickets_sold from the theater's capacity.
 fetch(`${url}/${1}`)
@@ -19,7 +17,6 @@ fetch(`${url}/${1}`)
   .then(renderMovie);
 
 function renderMovie(film) {
-  // console.log(film)
   poster.src = film.poster;
   title.textContent = film.title;
   runtime.textContent = `${film.runtime} minutes`;
@@ -46,7 +43,6 @@ function renderFilmList(film) {
 }
 
 function renderFilm(film) {
-  // console.log(film)
   const li = document.createElement("li");
   li.classList.add("film");
   li.classList.add("item");
